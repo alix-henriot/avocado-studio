@@ -1,4 +1,5 @@
 import FeatureCard from "@/components/FeatureCard";
+import { Button } from "@nextui-org/react";
 
 
 export default function Home() {
@@ -15,7 +16,9 @@ export default function Home() {
       <main
       className="flex-grow p-4"
       >
-        <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier'/>
+        <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier'>
+          <Button color='default' size='lg' className="w-fit" radius='full'>Request a quote</Button>
+        </FeatureCard>
       </main>
 
       <footer

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Lato, Noto_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { NextUIProvider } from "@nextui-org/react";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} antialiased`}
       >
-        {children}
+        <NextUIProvider>
+          {children}
+        </NextUIProvider>
       </body>
     </html>
   );

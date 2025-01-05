@@ -16,7 +16,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, children}) =>
         />
 
         <div
-        className='flex flex-col gap-3 text-center'
+        className='flex flex-col gap-3 items-center'
         >
             <h2
             className='font-normal text-3xl tracking-tight'
@@ -28,8 +28,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, children}) =>
             >
                 {subtitle}
             </h3>
+            {children}
         </div>
-        {children}
     </div>
   )
 }
