@@ -7,3 +7,7 @@ The layout takes cues from the Apple Music web page, focusing on simplicity and 
 
 ## Purpose
 When selecting a photographer, potential clients value image quality and transparent pricing. This landing page addresses these priorities with a streamlined call-to-action for quotes, making it easy for visitors to inquire and connect.
+
+## Libraries and Utilities
+- **Animations**: Framer Motion
+- **UI Components**: Headless UI ?
