@@ -51,10 +51,10 @@ export default function Home() {
       className='flex-grow'
       >
         <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
-          <Button color='default' size='lg' className="w-fit" radius='full'>Request a quote</Button>
+          <Button color='default' size='lg' className='w-fit' radius='full'>Request a quote</Button>
         </FeatureCard>
 
-        <Carousel items={carouselItems}/>
+        <Carousel title='Unique exposure for your company' subtitle='Empower your brand image in South France.' items={carouselItems}/>
 
         <FeatureCard title='Audiovisual Studio' subtitle='Expert in Content' src='/feature-image-1.jpg' alt='Photographer editing photos'/>
 
