@@ -51,7 +51,7 @@ export default function Home() {
     className='min-h-screen flex flex-col'
     >
       <header>
-        <Nav items={navitems}/>
+        {/* <Nav items={navitems}/> */}
       </header>
 
       <main>
