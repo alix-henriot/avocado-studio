@@ -14,11 +14,15 @@ export default function Home() {
       </header>
 
       <main
-      className="flex-grow p-4"
+      className='flex-grow p-4'
       >
-        <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier'>
+        <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
           <Button color='default' size='lg' className="w-fit" radius='full'>Request a quote</Button>
         </FeatureCard>
+
+        <FeatureCard title='Audiovisual Studio' subtitle='Expert in Content' src='/feature-image-1.jpg' alt='Photographer editing photos'/>
+
+        <FeatureCard title='Mobile throughout South France' subtitle='Available anywhere' src='/feature-image-2.jpg' alt='Photographer shooting high in the mountain'/>
       </main>
 
       <footer
