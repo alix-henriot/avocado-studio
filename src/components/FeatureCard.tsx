@@ -48,10 +48,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, src, alt, chi
             {children}
         </div>
         <Image
-        className='absolute -z-0'
+        className='absolute -z-0 object-fill'
         src={src}
         alt={alt}
-        layout='fill'
+        //placeholder="blur"
+        fill
         objectFit='cover'
         loading='lazy'
         />
