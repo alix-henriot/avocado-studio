@@ -1,3 +1,4 @@
+import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
 import { Button } from "@nextui-org/react";
 
@@ -14,11 +15,13 @@ export default function Home() {
       </header>
 
       <main
-      className='flex-grow p-4'
+      className='flex-grow'
       >
         <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
           <Button color='default' size='lg' className="w-fit" radius='full'>Request a quote</Button>
         </FeatureCard>
+
+        <Carousel/>
 
         <FeatureCard title='Audiovisual Studio' subtitle='Expert in Content' src='/feature-image-1.jpg' alt='Photographer editing photos'/>
 
