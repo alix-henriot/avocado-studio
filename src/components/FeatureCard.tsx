@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image';
-import React from 'react'
+import React, { useRef } from 'react'
+import { motion, useInView, useMotionValue, useScroll, useTransform } from 'framer-motion';
 
 type FeatureCardProps = {
     title: string;
@@ -10,8 +12,20 @@ type FeatureCardProps = {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, src, alt, children}) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: false });
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['start end', 'center center'],
+    });
+
+    const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
-    <div
+    <motion.div
+    ref={ref}
+    style={{ scale, opacity }}
     className='relative container flex flex-col gap-5 p-20 mx-auto my-8 w-full h-[620px] rounded-3xl overflow-clip'
     >
         <div
@@ -41,7 +55,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, src, alt, chi
         objectFit='cover'
         loading='lazy'
         />
-    </div>
+    </motion.div>
   )
 }
 
