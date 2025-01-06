@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
 import React, { useRef } from 'react'
-import { motion, useInView, useMotionValue, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 type FeatureCardProps = {
     title: string;
