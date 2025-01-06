@@ -1,9 +1,18 @@
 import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
+import Nav from "@/components/Nav";
 import { Button } from "@nextui-org/react";
 
 
 export default function Home() {
+  const navitems = [
+    {
+      size:"sm",
+      radius:'full',
+      href: null,
+    }
+  ]
+
   const carouselItems = [
     {
       title: 'Business Event',
@@ -39,17 +48,13 @@ export default function Home() {
 
   return (
     <div
-    className="min-h-screen flex flex-col"
+    className='min-h-screen flex flex-col'
     >
-      <header
-      className="bg-gray-800 text-white p-4"
-      >
-        <h1>Avocado Studio Pro</h1>
+      <header>
+        <Nav items={navitems}/>
       </header>
 
-      <main
-      className='flex-grow'
-      >
+      <main>
         <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
           <Button color='default' size='lg' className='w-fit' radius='full'>Request a quote</Button>
         </FeatureCard>
