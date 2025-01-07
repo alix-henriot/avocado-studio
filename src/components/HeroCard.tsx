@@ -33,7 +33,7 @@ const HeroCard: React.FC<HeroCardProps> = ({title, subtitle, src, alt, children}
         />
 
         <div
-        className='relative flex flex-col gap-2 items-center z-10'
+        className='relative flex flex-col gap-2 items-center text-center z-10'
         >
             <h2
             className='font-normal text-3xl tracking-tight'

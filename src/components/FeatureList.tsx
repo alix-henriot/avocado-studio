@@ -31,7 +31,7 @@ const FeatureList: React.FC<FeatureListProps> = ({title, subtitle, items}) => {
     className='relative container flex flex-col gap-16 p-20 mx-auto my-8 w-full h-[620px] bg-slate-100 rounded-3xl overflow-clip'
     >
         <div
-        className='relative flex flex-col gap-2 items-center z-10'
+        className='relative flex flex-col gap-2 items-center text-center z-10'
         >
             <h2
             className='font-normal text-3xl tracking-tight'
