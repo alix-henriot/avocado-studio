@@ -1,5 +1,6 @@
 import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
+import FeatureList from "@/components/FeatureList";
 import HeroCard from "@/components/HeroCard";
 import Nav from "@/components/Nav";
 import { Button } from "@nextui-org/react";
@@ -56,6 +57,37 @@ export default function Home() {
     },
   ];
 
+  const featureListData = {
+    title: 'All-in-one service',
+    description: 'Designed for foreign companies',
+    items: [
+      {
+        title: 'Shooting authorizations',
+        description: 'We take care of shooting authorizations.'
+      },
+      {
+        title: 'Location search',
+        description: 'We take care of location search.'
+      },
+      {
+        title: 'Hotel reservations',
+        description: 'We take care of hotel reservations.'
+      },
+      {
+        title: 'Supply management',
+        description: 'We take care of supply management.'
+      },
+      {
+        title: 'Rebilling',
+        description: 'We take care of rebilling.'
+      },
+      {
+        title: 'Photo & Video Edting',
+        description: 'We take care of photo and video editing.'
+      }
+    ]
+  }
+
   return (
     <div
     className='min-h-screen flex flex-col'
@@ -74,6 +106,8 @@ export default function Home() {
         <FeatureCard title='Audiovisual Studio' subtitle='Expert in Content' src='/feature-image-1.jpg' alt='Photographer editing photos'/>
 
         <FeatureCard title='Mobile throughout South France' subtitle='Available anywhere' src='/feature-image-2.jpg' alt='Photographer shooting high in the mountain'/>
+
+        <FeatureList title={featureListData.title} subtitle={featureListData.description} items={featureListData.items}/>
       </main>
 
       <footer
