@@ -9,7 +9,7 @@ type NavProps = {
 const Nav: React.FC<NavProps> = ({items}) => {
   return (
     <div
-    className='container sticky top-0 flex flex-row p-4 mx-auto justify-between'
+    className='container sticky top-0 flex flex-row p-4 mx-auto mt-5 justify-between'
     >
         <div
         className='flex flex-row gap-1 font-medium text-lg tracking-tight'

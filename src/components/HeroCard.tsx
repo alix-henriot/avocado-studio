@@ -26,7 +26,7 @@ const HeroCard: React.FC<HeroCardProps> = ({title, subtitle, src, alt, children}
     <motion.div
     //ref={ref}
     //style={{ scale, opacity }}
-    className='relative container flex flex-col gap-5 p-20 mx-auto my-8 w-full h-[620px] rounded-3xl overflow-clip'
+    className='relative container flex flex-col gap-5 p-20 mx-auto mb-8 h-[620px]  rounded-3xl overflow-clip'
     >
         <div
         className='w-full h-full'
