@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 
 type CarouselProps = {
     title: string;
@@ -14,9 +15,7 @@ const Carousel: React.FC<CarouselProps> = ({title, subtitle, items}) => {
     <div
     className='flex flex-col my-16 text-center'
     >
-        <h3 className='font-semibold text-5xl tracking-tight mb-3'>{title}</h3>
-        <p className='font-medium text-2xl'>{subtitle}</p>
-
+        <SectionTitle title={title} subtitle={subtitle}/>
         <div
         className='flex flex-row items-end px-5 gap-5 h-[520px] overflow-x-scroll'
         >

@@ -2,6 +2,7 @@ import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
 import HeroCard from "@/components/HeroCard";
+import MarqueeSection from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import { Button } from "@nextui-org/react";
 
@@ -61,6 +62,21 @@ export default function Home() {
     ]
   }
 
+  const featureCardData = [
+    {
+      title: 'Audiovisual Studio',
+      subtitle: 'Expert in Content',
+      src: '/feature-image-1.jpg',
+      alt: 'Photographer editing photos'
+    },
+    {
+      title: 'Mobile throughout South France',
+      subtitle: 'Available anywhere',
+      src: '/feature-image-2.jpg',
+      alt: 'Photographer shooting high in the mountain'
+    },
+  ]
+
   const featureListData = {
     title: 'All-in-one service',
     subtitle: 'Designed for foreign companies',
@@ -92,20 +108,52 @@ export default function Home() {
     ]
   }
 
-  const featureCardData = [
-    {
-      title: 'Audiovisual Studio',
-      subtitle: 'Expert in Content',
-      src: '/feature-image-1.jpg',
-      alt: 'Photographer editing photos'
-    },
-    {
-      title: 'Mobile throughout South France',
-      subtitle: 'Available anywhere',
-      src: '/feature-image-2.jpg',
-      alt: 'Photographer shooting high in the mountain'
-    },
-  ]
+  const marqueeSectionData = {
+    title: 'Backed by companies',
+    subtitle: 'Our latest work',
+    items: [
+      {
+        title: 'photo-1',
+        customer: 'company-1'
+      },
+      {
+        title: 'photo-2',
+        customer: 'company-2'
+      },
+      {
+        title: 'photo-3',
+        customer: 'company-3'
+      },
+      {
+        title: 'photo-4',
+        customer: 'company-4'
+      },
+      {
+        title: 'photo-5',
+        customer: 'company-5'
+      },
+      {
+        title: 'photo-6',
+        customer: 'company-6'
+      },
+      {
+        title: 'photo-7',
+        customer: 'company-7'
+      },
+      {
+        title: 'photo-8',
+        customer: 'company-8'
+      },
+      {
+        title: 'photo-9',
+        customer: 'company-9'
+      },
+      {
+        title: 'photo-10',
+        customer: 'company-10'
+      },
+    ]
+  }
 
   return (
     <div
@@ -127,6 +175,8 @@ export default function Home() {
         <FeatureCard {...featureCardData[1]}/>
 
         <FeatureList {...featureListData}/>
+
+        <MarqueeSection {...marqueeSectionData}/>
       </main>
 
       <footer

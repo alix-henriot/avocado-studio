@@ -4,6 +4,7 @@ import React, { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@nextui-org/react';
 import { Plus } from 'lucide-react';
+import SectionTitle from './SectionTitle';
 
 
 type FeatureListProps = {
@@ -30,21 +31,7 @@ const FeatureList: React.FC<FeatureListProps> = ({title, subtitle, items}) => {
     style={{ scale, opacity }}
     className='relative container flex flex-col gap-16 p-20 mx-auto my-8 w-full h-[620px] bg-default rounded-3xl overflow-clip'
     >
-        <div
-        className='relative flex flex-col gap-2 items-center text-center z-10'
-        >
-            <h2
-            className='font-normal text-3xl tracking-tight'
-            >
-                {title}
-            </h2>
-            <h3
-            className='font-bold text-6xl tracking-tight mb-3'
-            >
-                {subtitle}
-            </h3>
-        </div>
-
+        <SectionTitle title={title} subtitle={subtitle}/>
         <div
         className='grid lg:grid-cols-2 gap-5 mx-auto'
         >

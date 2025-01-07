@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import React, { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import SectionTitle from './SectionTitle';
 
 type FeatureCardProps = {
     title: string;
@@ -32,21 +33,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, src, alt, chi
         className='w-full h-full'
         />
 
-        <div
-        className='relative flex flex-col gap-2 items-center text-center z-10'
-        >
-            <h2
-            className='font-normal text-3xl tracking-tight'
-            >
-                {title}
-            </h2>
-            <h3
-            className='font-bold text-6xl tracking-tight mb-3'
-            >
-                {subtitle}
-            </h3>
-            {children}
-        </div>
+        <SectionTitle title={title} subtitle={subtitle}/>
         <Image
         className='absolute -z-0 object-fill'
         src={src}
