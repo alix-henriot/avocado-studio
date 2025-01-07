@@ -7,9 +7,18 @@ import { Button } from "@nextui-org/react";
 export default function Home() {
   const navitems = [
     {
-      size:"sm",
-      radius:'full',
-      href: null,
+      content: 'Portfolio',
+      color: 'default',
+      size: 'sm',
+      radius: 'full',
+      href: '/portfolio'
+    },
+    {
+      content: 'Contact',
+      color: 'primary',
+      size: 'sm',
+      radius: 'full',
+      href: '/contact'
     }
   ]
 
@@ -51,7 +60,7 @@ export default function Home() {
     className='min-h-screen flex flex-col'
     >
       <header>
-        {/* <Nav items={navitems}/> */}
+        <Nav items={navitems}/>
       </header>
 
       <main>

@@ -1,8 +1,9 @@
+'use client'
 import { Button, ButtonProps, ButtonVariantProps, Chip } from '@nextui-org/react'
 import React from 'react'
 
 type NavProps = {
-    items: ButtonVariantProps[];
+    items: ButtonProps[];
 }
 
 const Nav: React.FC<NavProps> = ({items}) => {
@@ -17,8 +18,9 @@ const Nav: React.FC<NavProps> = ({items}) => {
         <Chip color='primary' size='md' radius='sm'>Pro</Chip>
         </div>
         <div className='flex flex-row gap-3'>
-            <Button color='default' size='sm' radius='full' href=''>Portfolio</Button>
-            <Button color='primary' size='sm' radius='full' href=''>Contact</Button>
+            {items.map((item, index) => (
+              <Button key={index} color={item.color} size={item.size} radius={item.radius} href={item.href}>{item.content}</Button>
+            ))}
         </div>
     </div>
   )
