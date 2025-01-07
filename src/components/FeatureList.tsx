@@ -28,7 +28,7 @@ const FeatureList: React.FC<FeatureListProps> = ({title, subtitle, items}) => {
     <motion.div
     ref={ref}
     style={{ scale, opacity }}
-    className='relative container flex flex-col gap-16 p-20 mx-auto my-8 w-full h-[620px] bg-slate-100 rounded-3xl overflow-clip'
+    className='relative container flex flex-col gap-16 p-20 mx-auto my-8 w-full h-[620px] bg-default rounded-3xl overflow-clip'
     >
         <div
         className='relative flex flex-col gap-2 items-center text-center z-10'
