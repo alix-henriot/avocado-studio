@@ -21,5 +21,6 @@ export default {
   plugins: [
     nextui(),
     require('tailwindcss-debug-screens'),
+    require('@tailwindcss/typography'),
   ],
 } satisfies Config;
