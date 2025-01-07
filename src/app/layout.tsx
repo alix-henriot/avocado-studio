@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} antialiased`}
+        className={`${interSans.variable} antialiased debug-screens`}
       >
         <NextUIProvider>
           {children}
