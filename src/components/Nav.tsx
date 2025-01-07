@@ -1,5 +1,5 @@
 'use client'
-import { Button, ButtonProps, ButtonVariantProps, Chip } from '@nextui-org/react'
+import { Button, ButtonProps, Chip } from '@nextui-org/react'
 import React from 'react'
 
 type NavProps = {
