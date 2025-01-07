@@ -1,5 +1,6 @@
 import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
+import HeroCard from "@/components/HeroCard";
 import Nav from "@/components/Nav";
 import { Button } from "@nextui-org/react";
 
@@ -64,9 +65,9 @@ export default function Home() {
       </header>
 
       <main>
-        <FeatureCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
+        <HeroCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
           <Button color='default' size='lg' className='w-fit' radius='full'>Request a quote</Button>
-        </FeatureCard>
+        </HeroCard>
 
         <Carousel title='Unique exposure for your company' subtitle='Empower your brand image in South France.' items={carouselItems}/>
 
