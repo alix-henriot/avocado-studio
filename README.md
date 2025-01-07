@@ -11,3 +11,4 @@ When selecting a photographer, potential clients value image quality and transpa
 ## Libraries and Utilities
 - **Animations**: Framer Motion
 - **UI Components**: NextUI
+- **Icons**: Lucide
