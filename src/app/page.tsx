@@ -24,46 +24,50 @@ export default function Home() {
     }
   ]
 
-  const carouselItems = [
-    {
-      title: 'Business Event',
-      description: 'We provide business event shooting.',
-      src: '/business-service.jpg',
-      alt: 'business photo',
-    },
-    {
-      title: 'Fashion',
-      description: 'We provide fashion shooting.',
-      src: '/fashion-service.jpg',
-      alt: 'fashion photo',
-    },
-    {
-      title: 'Concert',
-      description: 'We provide concert shooting.',
-      src: '/concert-service.jpg',
-      alt: 'concert photo',
-    },
-    {
-      title: 'Food Shooting',
-      description: 'We provide food shooting.',
-      src: '/food-service.jpg',
-      alt: 'food photo',
-    },
-    {
-      title: 'Product Shooting',
-      description: 'We provide product shooting.',
-      src: '/product-service.jpg',
-      alt: 'product photo',
-    },
-  ];
+  const carouselData = {
+    title: 'Unique exposure for your company',
+    subtitle: 'Empower your brand image in South France.',
+    items: [
+      {
+        title: 'Business Event',
+        description: 'We provide business event shooting.',
+        src: '/business-service.jpg',
+        alt: 'business photo',
+      },
+      {
+        title: 'Fashion',
+        description: 'We provide fashion shooting.',
+        src: '/fashion-service.jpg',
+        alt: 'fashion photo',
+      },
+      {
+        title: 'Concert',
+        description: 'We provide concert shooting.',
+        src: '/concert-service.jpg',
+        alt: 'concert photo',
+      },
+      {
+        title: 'Food Shooting',
+        description: 'We provide food shooting.',
+        src: '/food-service.jpg',
+        alt: 'food photo',
+      },
+      {
+        title: 'Product Shooting',
+        description: 'We provide product shooting.',
+        src: '/product-service.jpg',
+        alt: 'product photo',
+      },
+    ]
+  }
 
   const featureListData = {
     title: 'All-in-one service',
-    description: 'Designed for foreign companies',
+    subtitle: 'Designed for foreign companies',
     items: [
       {
         title: 'Shooting authorizations',
-        description: 'We take care of shooting authorizations.'
+        description: 'We take care of shooting authorizations.',
       },
       {
         title: 'Location search',
@@ -88,6 +92,21 @@ export default function Home() {
     ]
   }
 
+  const featureCardData = [
+    {
+      title: 'Audiovisual Studio',
+      subtitle: 'Expert in Content',
+      src: '/feature-image-1.jpg',
+      alt: 'Photographer editing photos'
+    },
+    {
+      title: 'Mobile throughout South France',
+      subtitle: 'Available anywhere',
+      src: '/feature-image-2.jpg',
+      alt: 'Photographer shooting high in the mountain'
+    },
+  ]
+
   return (
     <div
     className='min-h-screen flex flex-col'
@@ -101,13 +120,13 @@ export default function Home() {
           <Button color='default' size='lg' className='w-fit' radius='full'>Request a quote</Button>
         </HeroCard>
 
-        <Carousel title='Unique exposure for your company' subtitle='Empower your brand image in South France.' items={carouselItems}/>
+        <Carousel {...carouselData}/>
 
-        <FeatureCard title='Audiovisual Studio' subtitle='Expert in Content' src='/feature-image-1.jpg' alt='Photographer editing photos'/>
+        <FeatureCard {...featureCardData[0]}/>
 
-        <FeatureCard title='Mobile throughout South France' subtitle='Available anywhere' src='/feature-image-2.jpg' alt='Photographer shooting high in the mountain'/>
+        <FeatureCard {...featureCardData[1]}/>
 
-        <FeatureList title={featureListData.title} subtitle={featureListData.description} items={featureListData.items}/>
+        <FeatureList {...featureListData}/>
       </main>
 
       <footer
