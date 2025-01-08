@@ -37,16 +37,16 @@ type CarouselItemProps = {
 const CarouselItem: React.FC<CarouselItemProps> = ({title, description, src, alt}) => {
 
     return (
-        <motion.div
-        whileHover={{ width: 480, height: 480 }}
-        transition={{ ease: 'easeInOut', duration: 0.2 }}
-        className='relative flex flex-col p-6 w-[400px] h-[400px] bg-gray-200 rounded-3xl flex-shrink-0 overflow-clip scrollbar-hide'
+        <div
+        className='group relative flex flex-col p-6 w-[400px] h-[400px] bg-gray-200 rounded-3xl flex-shrink-0 overflow-clip scrollbar-hide transition-all hover:w-[480px] hover:h-[480px] hover:p-8'
         >
             <div
             className='flex flex-col items-start gap-2 z-10'
             >
-                <span className='font-semibold text-4xl tracking-tight text-white'>{title}</span>
-                <p className='font-medium text-lg text-white'>{description}</p>
+                <span className='font-semibold text-4xl tracking-tight text-white group-hover:text-5xl'>{title}</span>
+                <p
+                className='font-medium text-lg text-white hidden group-hover:block'
+                >{description}</p>
             </div>
             <Image
                 className='absolute -z-0 object-fill'
@@ -56,7 +56,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({title, description, src, alt
                 objectFit='cover'
                 loading='lazy'
             />
-        </motion.div>
+        </div>
     )
 }
 

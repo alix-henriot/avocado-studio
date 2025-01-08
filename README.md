@@ -9,6 +9,6 @@ The layout takes cues from the Apple Music web page, focusing on simplicity and 
 When selecting a photographer, potential clients value image quality and transparent pricing. This landing page addresses these priorities with a streamlined call-to-action for quotes, making it easy for visitors to inquire and connect.
 
 ## Libraries and Utilities
-- **Animations**: Framer Motion
+- **Animations**: Tailwind CSS for simple CSS animated components & Framer Motion for complex scroll and state driven animations.
 - **UI Components**: NextUI
 - **Icons**: Lucide
