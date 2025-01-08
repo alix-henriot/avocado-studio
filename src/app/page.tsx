@@ -1,3 +1,4 @@
+import ActionCard from "@/components/ActionCard";
 import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
@@ -156,6 +157,12 @@ export default function Home() {
     ]
   }
 
+  const actionCardData =  {
+    title: 'Let\'s make it pro',
+    src: '/feature-image-2.jpg',
+    alt: 'Photographer shooting high in the mountain'
+  }
+
   const footerData = {
     links: [
       {
@@ -195,13 +202,9 @@ export default function Home() {
         <FeatureCard {...featureCardData[1]}/>
 
         <MarqueeSection {...marqueeSectionData}/>
+        
+        <ActionCard {...actionCardData}/>
       </main>
-
-      {/* <footer
-      className="bg-gray-800 text-white p-4 text-center"
-      >
-        <p>© 2025 Avocado Studio. All rights reserved.</p>
-      </footer> */}
       <Footer {...footerData}/>
     </div>
   );
