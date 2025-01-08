@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
+import Footer from "@/components/Footer";
 import HeroCard from "@/components/HeroCard";
 import MarqueeSection from "@/components/Marquee";
 import Nav from "@/components/Nav";
@@ -155,6 +156,23 @@ export default function Home() {
     ]
   }
 
+  const footerData = {
+    links: [
+      {
+          title: "Product",
+          items: ["Overview", "Features", "Solutions", "Tutorials"],
+      },
+      {
+          title: "Company",
+          items: ["About us", "Careers", "Press", "News"],
+      },
+      {
+          title: "Resource",
+          items: ["Blog", "Newsletter", "Events", "Help center"],
+      },
+    ]
+  }
+
   return (
     <div
     className='min-h-screen flex flex-col'
@@ -172,18 +190,19 @@ export default function Home() {
 
         <FeatureCard {...featureCardData[0]}/>
 
-        <FeatureCard {...featureCardData[1]}/>
-
         <FeatureList {...featureListData}/>
+        
+        <FeatureCard {...featureCardData[1]}/>
 
         <MarqueeSection {...marqueeSectionData}/>
       </main>
 
-      <footer
+      {/* <footer
       className="bg-gray-800 text-white p-4 text-center"
       >
         <p>© 2025 Avocado Studio. All rights reserved.</p>
-      </footer>
+      </footer> */}
+      <Footer {...footerData}/>
     </div>
   );
 }
