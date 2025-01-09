@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle';
+import { cn } from '@/lib/utils';
 
 type CarouselProps = {
     title: string;
@@ -13,39 +14,44 @@ type CarouselProps = {
 const Carousel: React.FC<CarouselProps> = ({title, subtitle, items}) => {
   return (
     <div
-    className='flex flex-col my-16 text-center'
     >
-        <SectionTitle title={title} subtitle={subtitle}/>
+        <SectionTitle className='text-center max-w-80' title={title} subtitle={subtitle}/>
         <div
-        className='flex flex-row items-end px-5 gap-5 h-[520px] overflow-x-scroll'
+        className='grid grid-cols-2 px-3 gap-2 overflow-x-scroll'
         >
-            {items.map((item, index) => (
-                <CarouselItem key={index} title={item.title} description={item.description} src={item.src} alt={item.alt}/>
-            ))}
+            {items.map((item, index) => {
+                const isFirstOdd = index === 0 && items.length % 2 !== 0;
+                return (
+                    <CarouselItem className={cn(isFirstOdd ? 'col-span-2 aspect-video' : 'aspect-square')} key={index} title={item.title} description={item.description} src={item.src} alt={item.alt}/>
+                )
+            })}
         </div>
     </div>
   )
 }
 
 type CarouselItemProps = {
+    className?: string;
     title: string;
     description: string;
     src: string;
     alt: string;
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({title, description, src, alt}) => {
+const CarouselItem: React.FC<CarouselItemProps> = ({className, title, description, src, alt}) => {
 
     return (
         <div
-        className='group relative flex flex-col p-6 w-[400px] h-[400px] bg-gray-200 rounded-3xl flex-shrink-0 overflow-clip scrollbar-hide transition-all hover:w-[480px] hover:h-[480px] hover:p-8'
+        className={
+            cn('group relative flex flex-col p-4 w-full md:max-w-60 bg-gray-200 rounded-2xl overflow-clip scrollbar-hide transition-all',
+            className)}
         >
             <div
-            className='flex flex-col items-start gap-2 z-10'
+            className='flex flex-col items-start gap-4 z-10'
             >
-                <span className='font-semibold text-4xl tracking-tight text-white group-hover:text-5xl'>{title}</span>
+                <span className='font-semibold text-xl lg:text-4xl text-white group-hover:text-2xl'>{title}</span>
                 <p
-                className='font-medium text-lg text-white hidden group-hover:block'
+                className='font-medium text-base text-white hidden group-hover:block'
                 >{description}</p>
             </div>
             <Image

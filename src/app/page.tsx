@@ -32,16 +32,16 @@ export default function Home() {
     subtitle: 'Empower your brand image in South France.',
     items: [
       {
-        title: 'Business Event',
-        description: 'We provide business event shooting.',
-        src: '/business-service.jpg',
-        alt: 'business photo',
-      },
-      {
         title: 'Fashion',
         description: 'We provide fashion shooting.',
         src: '/fashion-service.jpg',
         alt: 'fashion photo',
+      },
+      {
+        title: 'Business Event',
+        description: 'We provide business event shooting.',
+        src: '/business-service.jpg',
+        alt: 'business photo',
       },
       {
         title: 'Concert',
@@ -159,7 +159,8 @@ export default function Home() {
 
   const actionCardData =  {
     title: 'Let\'s make it pro',
-    src: '/feature-image-2.jpg',
+    subtitle: 'Leverage your brand image',
+    src: '/action-image.jpg',
     alt: 'Photographer shooting high in the mountain'
   }
 
@@ -184,26 +185,37 @@ export default function Home() {
     <div
     className='min-h-screen flex flex-col'
     >
-      <header>
-        <Nav items={navitems}/>
-      </header>
+      <Nav>
+        <Button radius='full' size='sm'>Portofolio</Button>
+        <Button color='primary' radius='full' size='sm'>Contact</Button>
+      </Nav>
 
       <main>
         <HeroCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
-          <Button color='default' size='lg' className='w-fit' radius='full'>Request a quote</Button>
+          <Button color='default' size='md' className='w-fit' radius='full'>Request a quote</Button>
         </HeroCard>
 
         <Carousel {...carouselData}/>
 
-        <FeatureCard {...featureCardData[0]}/>
+        <section className=''>
+          <FeatureCard {...featureCardData[0]}/>
+        </section>
 
-        <FeatureList {...featureListData}/>
-        
-        <FeatureCard {...featureCardData[1]}/>
+        <section className=''>
+          <FeatureList {...featureListData}/>
+        </section>
+
+        <section className=''>
+          <FeatureCard {...featureCardData[1]}/>
+        </section>        
 
         <MarqueeSection {...marqueeSectionData}/>
-        
-        <ActionCard {...actionCardData}/>
+
+        <section className=''>
+          <ActionCard {...actionCardData}>
+            <Button color='default' size='md' className='w-fit' radius='full'>Request a quote</Button>
+          </ActionCard>
+        </section>    
       </main>
       <Footer {...footerData}/>
     </div>

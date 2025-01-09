@@ -17,8 +17,8 @@ const MarqueeSection: React.FC<MarqueeSectionProps> = ({title, subtitle, items, 
     const secondRow = items.slice(items.length / 2);
     
     return (
-      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden bg-background">
-        <SectionTitle title={title} subtitle={subtitle}/>
+      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
+        <SectionTitle className='text-center' title={title} subtitle={subtitle}/>
         <Marquee pauseOnHover className="[--duration:20s]">
           {firstRow.map((item, index) => (
             <MarqueeItem key={index} {...item} />

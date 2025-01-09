@@ -22,24 +22,26 @@ const FeatureList: React.FC<FeatureListProps> = ({title, subtitle, items}) => {
         offset: ['start end', 'center center'],
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+    const y = useTransform(scrollYProgress, [0, 1], [64, 0]);
     const opacity = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
   return (
+    <section className='px-3 lg:px-0'>
     <motion.div
     ref={ref}
     style={{ y, opacity }}
-    className='relative container flex flex-col gap-16 p-20 mx-auto my-8 w-full h-[620px] bg-default rounded-3xl overflow-clip'
+    className='relative container flex flex-col gap-4 p-4 lg:p-20 mx-auto my-8 max-w-screen md:max-w-5xl md:aspect-video bg-default rounded-3xl overflow-clip'
     >
-        <SectionTitle title={title} subtitle={subtitle}/>
+        <SectionTitle className='text-center max-w-80' title={title} subtitle={subtitle}/>
         <div
-        className='grid lg:grid-cols-2 gap-5 mx-auto'
+        className='grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mx-auto w-full'
         >
             {items.map((item, index) => (
                 <ListItem key={index} title={item.title}/>
             ))}
         </div>
     </motion.div>
+    </section>
   )
 }
 
@@ -52,7 +54,7 @@ type ListItemProps = {
 
 const ListItem: React.FC<ListItemProps> = ({title, description}) => {
     return (
-        <div className='flex flex-row p-6 items-baseline justify-between font-medium text-xl w-[400px] bg-white rounded-3xl'>
+        <div className='flex flex-row p-4 lg:p-6 items-baseline justify-between font-medium text-lg w-full bg-white rounded-xl lg:rounded-2xl'>
             <span>{title}</span>
             <Button color='default' size='sm' radius='full' isIconOnly>
                 <Plus className='w-4 h-4'/>

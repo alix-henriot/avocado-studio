@@ -24,26 +24,26 @@ const HeroCard: React.FC<HeroCardProps> = ({title, subtitle, src, alt, children}
     const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]); */
 
   return (
-    <motion.div
-    //ref={ref}
-    //style={{ scale, opacity }}
-    className='relative container flex flex-col gap-5 p-20 mx-auto mb-8 h-[620px]  rounded-3xl overflow-clip'
-    >
-        <div
-        className='w-full h-full'
-        />
+    <section className='px-3 lg:px-0'>
+        <motion.div
+        className='relative container flex flex-col gap-5 p-6 lg:p-20 mx-auto mb-8 max-w-screen md:max-w-5xl aspect-[3/4] md:aspect-video rounded-2xl lg:rounded-3xl overflow-clip'
+        >
+            <div
+            className='w-full h-full'
+            />
 
-        <SectionTitle title={title} subtitle={subtitle}/>
-        <Image
-        className='absolute -z-0 object-fill'
-        src={src}
-        alt={alt}
-        //placeholder="blur"
-        fill
-        objectFit='cover'
-        loading='lazy'
-        />
-    </motion.div>
+            <SectionTitle className='text-center' title={title} subtitle={subtitle}/>
+            <Image
+            className='absolute -z-0 object-fill'
+            src={src}
+            alt={alt}
+            //placeholder="blur"
+            fill
+            objectFit='cover'
+            loading='lazy'
+            />
+        </motion.div>
+    </section>
   )
 }
 

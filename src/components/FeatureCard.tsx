@@ -21,30 +21,32 @@ const FeatureCard: React.FC<FeatureCardProps> = ({title, subtitle, src, alt, chi
     });
 
     //const scale = useTransform(scrollYProgress, [0, 1], [0.85, 1]);
-    const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+    const y = useTransform(scrollYProgress, [0, 1], [64, 0]);
     const opacity = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
   return (
-    <motion.div
-    ref={ref}
-    style={{ y, opacity }}
-    className='relative container flex flex-col gap-5 p-20 mx-auto my-8 w-full h-[620px] rounded-3xl overflow-clip'
-    >
-        <div
-        className='w-full h-full'
-        />
+    <section className='px-3 lg:px-0'>
+      <motion.div
+      ref={ref}
+      style={{ y, opacity }}
+      className='relative container grid grid-cols-1 p-6 lg:p-20 mx-auto max-w-screen md:max-w-5xl aspect-[3/4] md:aspect-video rounded-2xl lg:rounded-3xl overflow-clip'
+      >
+          <div
+          className='w-full h-full'
+          />
 
-        <SectionTitle title={title} subtitle={subtitle}/>
-        <Image
-        className='absolute -z-0 object-fill'
-        src={src}
-        alt={alt}
-        //placeholder="blur"
-        fill
-        objectFit='cover'
-        loading='lazy'
-        />
-    </motion.div>
+          <SectionTitle className='text-center' title={title} subtitle={subtitle}/>
+          <Image
+          className='absolute -z-0 object-fill'
+          src={src}
+          alt={alt}
+          //placeholder="blur"
+          fill
+          objectFit='cover'
+          loading='lazy'
+          />
+      </motion.div>
+    </section>
   )
 }
 
