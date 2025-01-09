@@ -1,29 +1,48 @@
 'use client'
 import { Button, ButtonProps, Chip } from '@nextui-org/react'
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-org/react';
+import { Ellipsis } from 'lucide-react';
 import React from 'react'
 
 type NavProps = {
-    items: ButtonProps[];
+  children?: React.ReactNode
 }
 
-const Nav: React.FC<NavProps> = ({items}) => {
+const Nav: React.FC<NavProps> = ({ children }) => {
   return (
-    <div
-    className='container sticky top-0 flex flex-row p-4 mx-auto mt-5 justify-between'
-    >
-        <div
-        className='flex flex-row gap-1 font-medium text-lg tracking-tight'
-        >
-        <h1>Avocado Studio</h1>
-        <Chip color='primary' size='md' radius='sm'>Pro</Chip>
+    <header className="px-3 lg:px-0">
+      <div className="container top-0 flex flex-row py-3 mx-auto max-w-screen md:max-w-5xl items-end justify-between">
+        <div className="flex items-baseline font-medium text-xl tracking-tight">
+          <h5>Avocado Studio</h5>
         </div>
-        <div className='flex flex-row gap-3'>
-            {items.map((item, index) => (
-              <Button key={index} color={item.color} size={item.size} radius={item.radius} href={item.href}>{item.content}</Button>
-            ))}
+        <div className="flex flex-row gap-3">
+          <Button radius="full" size="md">Portfolio</Button>
+          {/* Hide Contact button on small screens */}
+          <Button
+            color="primary"
+            radius="full"
+            size="md"
+            className="hidden sm:block"
+          >
+            Contact
+          </Button>
+          {/* Show Dropdown on small screens */}
+          <div className="block sm:hidden" >
+            <Dropdown>
+              <DropdownTrigger>
+                <Button isIconOnly radius="full" size="md">
+                  <Ellipsis />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="contact">Contact</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         </div>
-    </div>
-  )
+      </div>
+    </header>
+  );
 }
 
 export default Nav
