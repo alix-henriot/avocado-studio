@@ -14,8 +14,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#007AFF",
-        default: "#F5F5F7"
+        primary: "var(--color-primary)",
+        default: "var(--color-default)",
       },
       animation: {
         marquee: "marquee var(--duration) linear infinite",
@@ -38,5 +38,6 @@ export default {
     nextui(),
     require('tailwindcss-debug-screens'),
     require('@tailwindcss/typography'),
+    //require('tailwindcss-scroll-snap')
   ],
 } satisfies Config;
