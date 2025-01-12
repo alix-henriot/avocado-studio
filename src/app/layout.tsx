@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
+import {ThemeProvider as NextThemesProvider} from "next-themes";
 
 const robotoFlex = Roboto_Flex({
   variable: "--font-roboto-sans",
@@ -24,7 +25,9 @@ export default function RootLayout({
         className={`${robotoFlex.variable} antialiased debug-screens`}
       >
         <NextUIProvider>
+          <NextThemesProvider attribute="class">
           {children}
+          </NextThemesProvider>
         </NextUIProvider>
       </body>
     </html>
