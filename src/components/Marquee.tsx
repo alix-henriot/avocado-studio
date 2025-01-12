@@ -1,42 +1,8 @@
 'use client'
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useAnimationControls } from "framer-motion"; 
 import { cn } from "@/lib/utils";
 import { Tooltip } from "@nextui-org/react";
-import SectionTitle from "./SectionTitle";
-
-
-type MarqueeSectionProps = {
-    title: string;
-    subtitle: string;
-    items: MarqueeItemProps[];
-}
-
-const MarqueeSection: React.FC<MarqueeSectionProps> = ({title, subtitle, items, ...props}) => {
-    const firstRow = items.slice(0, items.length / 2);
-    const secondRow = items.slice(items.length / 2);
-    
-    return (
-      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
-        <SectionTitle className='text-center' title={title} subtitle={subtitle}/>
-        <Marquee pauseOnHover className="[--duration:20s]">
-          {firstRow.map((item, index) => (
-            <MarqueeItem key={index} {...item} />
-          ))}
-        </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]">
-          {secondRow.map((item, index) => (
-            <MarqueeItem key={index} {...item} />
-          ))}
-        </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-      </div>
-    );
-}
-
-export default MarqueeSection
-
+import Image from "next/image";
 
 type MarqueeProps = {
     className?: string;
@@ -88,15 +54,18 @@ const Marquee: React.FC<MarqueeProps> = ({
   )
 }
 
+export { Marquee }
+
+
 type MarqueeItemProps = {
     title: string;
     date?: string;
     place?: string,
     customer?: string;
-    src?: string;
+    src: string;
 }
 
-const MarqueeItem: React.FC<MarqueeItemProps> = ({title, customer}) => {
+const MarqueeItem: React.FC<MarqueeItemProps> = ({title, customer, src}) => {
 
     return (
         <Tooltip
@@ -108,8 +77,20 @@ const MarqueeItem: React.FC<MarqueeItemProps> = ({title, customer}) => {
         }
         >
         <div
-        className='w-20 h-20 bg-default rounded-2xl'
-        />
+        className='w-1/3 aspect-square bg-default rounded-2xl'
+        >
+          <Image
+          //className='w-10 h-10'
+          src={src}
+          alt={title}
+          width={100}
+          height={100}
+          //placeholder="blur"
+          //fill
+          objectFit='cover'
+          loading='lazy'
+          /> 
+        </div>
         </Tooltip>
     )
 }
