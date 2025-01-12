@@ -15,7 +15,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--color-primary)",
-        default: "var(--color-default)",
+        nuance: "var(--color-nuance)",
       },
       animation: {
         marquee: "marquee var(--duration) linear infinite",
@@ -35,7 +35,28 @@ export default {
   },
   darkMode: "class",
   plugins: [
-    nextui(),
+    nextui({
+      prefix: "nextui", // prefix for themes variables
+      addCommonColors: false, // override common colors (e.g. "blue", "green", "pink").
+      defaultTheme: "light", // default theme from the themes object
+      defaultExtendTheme: "light", // default theme to extend on custom themes
+      layout: {}, // common layout tokens (applied to all themes)
+      themes: {
+        light: {
+          layout: {}, // light theme layout tokens
+          colors: {
+            //default: '#F5F5F7',
+            //primary: '#007AFF'
+          }, // light theme colors
+        },
+        dark: {
+          layout: {}, // dark theme layout tokens
+          colors: {
+          }, // dark theme colors
+        },
+        // ... custom themes
+      },
+    }),
     require('tailwindcss-debug-screens'),
     require('@tailwindcss/typography'),
     //require('tailwindcss-scroll-snap')
