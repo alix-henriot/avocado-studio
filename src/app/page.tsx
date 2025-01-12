@@ -1,87 +1,186 @@
+'use client'
 import ActionCard from "@/components/ActionCard";
-import Carousel from "@/components/Carousel";
+import BrandShowcase from "@/components/BrandShowcase";
+import Portfolio from "@/components/Portfolio";
 import FeatureCard from "@/components/FeatureCard";
 import FeatureList from "@/components/FeatureList";
+import { FlipWords } from "@/components/FlipWords";
 import Footer from "@/components/Footer";
-import HeroCard from "@/components/HeroCard";
-import MarqueeSection from "@/components/Marquee";
 import Nav from "@/components/Nav";
-import { Button } from "@nextui-org/react";
+import { Button, Divider } from "@nextui-org/react";
+import { Camera, Video } from "lucide-react";
+import Hero from "@/components/Hero";
 
 
 export default function Home() {
-  const navitems = [
-    {
-      content: 'Portfolio',
-      color: 'default',
-      size: 'sm',
-      radius: 'full',
-      href: '/portfolio'
-    },
-    {
-      content: 'Contact',
-      color: 'primary',
-      size: 'sm',
-      radius: 'full',
-      href: '/contact'
-    }
-  ]
 
   const carouselData = {
-    title: 'Unique exposure for your company',
-    subtitle: 'Empower your brand image in South France.',
+    categories: ['Fashion', 'Business', 'Food', 'Product'],
     items: [
       {
-        title: 'Fashion',
-        description: 'We provide fashion shooting.',
-        src: '/fashion-service.jpg',
-        alt: 'fashion photo',
+        src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D',
+        alt: 'A',
+        category: 'Fashion',
       },
       {
-        title: 'Business Event',
-        description: 'We provide business event shooting.',
-        src: '/business-service.jpg',
-        alt: 'business photo',
+        src: 'https://images.unsplash.com/photo-1544957992-20514f595d6f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
+        alt: 'B',
+        category: 'Fashion',
       },
       {
-        title: 'Concert',
-        description: 'We provide concert shooting.',
-        src: '/concert-service.jpg',
-        alt: 'concert photo',
+        src: 'https://images.unsplash.com/photo-1603189343302-e603f7add05a?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'C',
+        category: 'Fashion',
       },
       {
-        title: 'Food Shooting',
-        description: 'We provide food shooting.',
-        src: '/food-service.jpg',
-        alt: 'food photo',
+        src: 'https://images.unsplash.com/photo-1601597565151-70c4020dc0e1?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'C',
+        category: 'Fashion',
       },
       {
-        title: 'Product Shooting',
-        description: 'We provide product shooting.',
-        src: '/product-service.jpg',
-        alt: 'product photo',
+        src: 'https://images.unsplash.com/photo-1574015974293-817f0ebebb74?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'D',
+        category: 'Fashion',
       },
-    ]
-  }
+      {
+        src: 'https://images.unsplash.com/photo-1551113006-731674fbb3ff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
+        alt: 'E',
+        category: 'Fashion',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1591567462127-1f25099900ab?q=80&w=2866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'F',
+        category: 'Fashion',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1596993100471-c3905dafa78e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'G',
+        category: 'Fashion',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1618142628642-62a239cb9b5e?q=80&w=2978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'H',
+        category: 'Fashion',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1530884814558-1e316305211a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'I',
+        category: 'Fashion',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1660866838287-d2239bb99976?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'J',
+        category: 'Fashion',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/400',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/800',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/300',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/200',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/200',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/200',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/200',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        title: 'Historic Bridge',
+        description: 'A historic stone bridge over a calm river.',
+        src: 'https://picsum.photos/200',
+        alt: 'A stone bridge crossing a river',
+        category: 'Business',
+      },
+      {
+        src: 'https://picsum.photos/200',
+        alt: 'A freshly baked pizza with toppings',
+        category: 'Food',
+      },
+      {
+        src: 'https://picsum.photos/200',
+        alt: 'A platter with assorted fresh fruits',
+        category: 'Food',
+      },
+      {
+        title: 'Cutting-Edge Laptop',
+        description: 'A sleek laptop on a modern desk.',
+        src: 'https://picsum.photos/200',
+        alt: 'A laptop on a desk',
+        category: 'Product',
+      },
+      {
+        title: 'Smartphone Design',
+        description: 'A high-end smartphone with a minimalistic design.',
+        src: 'https://picsum.photos/200',
+        alt: 'A smartphone on a table',
+        category: 'Product',
+      },
+    ],
+  };  
 
   const featureCardData = [
     {
       title: 'Audiovisual Studio',
-      subtitle: 'Expert in Content',
-      src: '/feature-image-1.jpg',
-      alt: 'Photographer editing photos'
+      subtitle: 'Images that moves',
+      //src: '/business-service.jpg',
+      className: 'from-green-800 to-default',
+      alt: 'Photographer editing photos',
+      children: <div className='grid grid-flow-col gap-4 sm:gap-16 text-green-500'>
+        <Camera className='w-16 sm:w-24 h-16 sm:h-24'/>
+        <Divider className='bg-default' orientation='vertical' />
+        <Video className='w-16 sm:w-24 h-16 sm:h-24'/>
+      </div>
     },
     {
+      className: 'from-black',
       title: 'Mobile throughout South France',
       subtitle: 'Available anywhere',
       src: '/feature-image-2.jpg',
-      alt: 'Photographer shooting high in the mountain'
+      alt: 'Photographer shooting high in the mountain',
+      children: <FlipWords className='font-semibold tracking-tight text-white text-5xl sm:text-8xl md:text-9xl' words={['Nice', 'Marseille', 'Toulouse', 'Montpellier','Cannes']}/>
     },
   ]
 
   const featureListData = {
     title: 'All-in-one service',
-    subtitle: 'Designed for foreign companies',
+    subtitle: 'Tailored for foreign needs',
     items: [
       {
         title: 'Shooting authorizations',
@@ -110,49 +209,21 @@ export default function Home() {
     ]
   }
 
-  const marqueeSectionData = {
+  const brandShowcaseData = {
     title: 'Backed by companies',
-    subtitle: 'Our latest work',
+    subtitle: 'Inspiring trust',
     items: [
       {
-        title: 'photo-1',
-        customer: 'company-1'
+        name: 'Jinghui',
+        src: '/jinghui-logo.svg'
       },
       {
-        title: 'photo-2',
-        customer: 'company-2'
+        name: 'Lanvin',
+        src: '/lanvin-logo.svg'
       },
       {
-        title: 'photo-3',
-        customer: 'company-3'
-      },
-      {
-        title: 'photo-4',
-        customer: 'company-4'
-      },
-      {
-        title: 'photo-5',
-        customer: 'company-5'
-      },
-      {
-        title: 'photo-6',
-        customer: 'company-6'
-      },
-      {
-        title: 'photo-7',
-        customer: 'company-7'
-      },
-      {
-        title: 'photo-8',
-        customer: 'company-8'
-      },
-      {
-        title: 'photo-9',
-        customer: 'company-9'
-      },
-      {
-        title: 'photo-10',
-        customer: 'company-10'
+        name: 'TCL',
+        src: '/tcl-logo.svg'
       },
     ]
   }
@@ -161,7 +232,8 @@ export default function Home() {
     title: 'Let\'s make it pro',
     subtitle: 'Leverage your brand image',
     src: '/action-image.jpg',
-    alt: 'Photographer shooting high in the mountain'
+    alt: 'Photographer shooting high in the mountain',
+    children: <Button color='success' size='md' className='w-fit' radius='full'>Request a quote</Button>
   }
 
   const footerData = {
@@ -179,45 +251,29 @@ export default function Home() {
           items: ["Blog", "Newsletter", "Events", "Help center"],
       },
     ]
-  }
+  };
 
   return (
     <div
-    className='min-h-screen flex flex-col'
+    className=''
     >
-      <Nav>
-        <Button radius='full' size='sm'>Portofolio</Button>
-        <Button color='primary' radius='full' size='sm'>Contact</Button>
-      </Nav>
+      <main className='snap-y snap-proximity h-screen overflow-y-scroll scroll-p-4'>
+        <Nav/>
+        <Hero title='Photography in South France' subtitle='Unique exposure for your company' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'/>
+        
+        <Portfolio {...carouselData}/>
 
-      <main>
-        <HeroCard title='Chinese Photography in South France' subtitle='Creative Production in Montpellier' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'>
-          <Button color='default' size='md' className='w-fit' radius='full'>Request a quote</Button>
-        </HeroCard>
+        <FeatureCard {...featureCardData[0]}/>
 
-        <Carousel {...carouselData}/>
+        <FeatureList {...featureListData}/>
 
-        <section className=''>
-          <FeatureCard {...featureCardData[0]}/>
-        </section>
+        <FeatureCard {...featureCardData[1]}/>
 
-        <section className=''>
-          <FeatureList {...featureListData}/>
-        </section>
+        <BrandShowcase {...brandShowcaseData}/>
 
-        <section className=''>
-          <FeatureCard {...featureCardData[1]}/>
-        </section>        
-
-        <MarqueeSection {...marqueeSectionData}/>
-
-        <section className=''>
-          <ActionCard {...actionCardData}>
-            <Button color='default' size='md' className='w-fit' radius='full'>Request a quote</Button>
-          </ActionCard>
-        </section>    
+        <ActionCard {...actionCardData}/>
+        <Footer {...footerData}/>
       </main>
-      <Footer {...footerData}/>
     </div>
   );
 }
