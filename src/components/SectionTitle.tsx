@@ -4,7 +4,7 @@ import React from 'react'
 type SectionTitleProps = {
     className?: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({className, title, subtitle}) => {
