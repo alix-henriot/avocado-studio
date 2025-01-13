@@ -10,6 +10,7 @@ import Nav from "@/components/Nav";
 import { Button, Divider } from "@nextui-org/react";
 import { Camera, Video } from "lucide-react";
 import Hero from "@/components/Hero";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -233,7 +234,7 @@ export default function Home() {
     subtitle: 'Leverage your brand image',
     src: '/action-image.jpg',
     alt: 'Photographer shooting high in the mountain',
-    children: <Button color='success' size='md' className='w-fit' radius='full'>Request a quote</Button>
+    children: <Link href="/quote" passHref><Button as='a' variant='shadow' color='success' size='md' className='w-fit mb-8 z-10 mx-auto' radius='full'>Instant quote</Button></Link>
   }
 
   const footerData = {
