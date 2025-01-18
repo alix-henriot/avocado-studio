@@ -1,15 +1,15 @@
 'use client'
-import ActionCard from "@/components/ActionCard";
-import BrandShowcase from "@/components/BrandShowcase";
-import Portfolio from "@/components/Portfolio";
-import FeatureCard from "@/components/FeatureCard";
-import FeatureList from "@/components/FeatureList";
-import { FlipWords } from "@/components/FlipWords";
-import Footer from "@/components/Footer";
-import Nav from "@/components/Nav";
+import ActionCard from "@/components/ui/ActionCard";
+import BrandShowcase from "@/components/ui/BrandShowcase";
+import Portfolio from "@/components/ui/Portfolio";
+import FeatureCard from "@/components/ui/FeatureCard";
+import FeatureList from "@/components/ui/FeatureList";
+import { FlipWords } from "@/components/ui/FlipWords";
+import Footer from "@/components/ui/Footer";
+import Nav from "@/components/ui/Nav";
 import { Button, Divider } from "@nextui-org/react";
 import { Camera, Video } from "lucide-react";
-import Hero from "@/components/Hero";
+import Hero from "@/components/ui/Hero";
 import Link from "next/link";
 
 
@@ -215,6 +215,18 @@ export default function Home() {
     subtitle: 'Inspiring trust',
     items: [
       {
+        name: 'Shanghai Film Festival',
+        src: '/shanghai-film-festival.jpg'
+      },
+      {
+        name: 'PhotoVogue',
+        src: '/photovogue-logo.svg'
+      },
+      {
+        name: 'Cosmopolitan',
+        src: '/cosmopolitan-logo.png'
+      },
+      {
         name: 'Jinghui',
         src: '/jinghui-logo.svg'
       },
@@ -234,7 +246,7 @@ export default function Home() {
     subtitle: 'Leverage your brand image',
     src: '/action-image.jpg',
     alt: 'Photographer shooting high in the mountain',
-    children: <Link href="/quote" passHref><Button as='a' variant='shadow' color='success' size='md' className='w-fit mb-8 z-10 mx-auto' radius='full'>Instant quote</Button></Link>
+    children: <Link href="/quote" passHref><Button variant='shadow' color='success' size='md' className='w-fit mb-8 z-10 mx-auto' radius='full'>Instant quote</Button></Link>
   }
 
   const footerData = {
@@ -260,7 +272,7 @@ export default function Home() {
     >
       <main className='snap-y snap-proximity h-screen overflow-y-scroll scroll-p-4'>
         <Nav/>
-        <Hero title='Photography in South France' subtitle='Unique exposure for your company' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'/>
+        <Hero title='Photography in South France' subtitle='Exposure for your company' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'/>
         
         <Portfolio {...carouselData}/>
 

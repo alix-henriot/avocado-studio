@@ -27,22 +27,13 @@ const Nav: React.FC<NavProps> = ({ children }) => {
             About
           </Button>
           <Button
-            color="default"
-            variant='flat'
-            radius="full"
-            size="md"
-            className="hidden sm:block"
-          >
-            Contact
-          </Button>
-          <Button
             radius="full"
             color='success'
             variant='bordered'
             size="md"
             className="hidden sm:block"
           >
-            Portfolio
+            Contact
           </Button>
           {/* Show Dropdown on small screens */}
           <div className="block sm:hidden" >
@@ -59,9 +50,8 @@ const Nav: React.FC<NavProps> = ({ children }) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="portfolio">Portfolio</DropdownItem>
-                <DropdownItem key="contact">Contact</DropdownItem>
                 <DropdownItem key="about">About</DropdownItem>
+                <DropdownItem key="contact">Contact</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>

@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
-import SectionTitle from './SectionTitle';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 type ActionCardProps = {
     title: string;
@@ -21,7 +21,7 @@ const ActionCard: React.FC<ActionCardProps> = ({title, subtitle, src, alt, child
             {children}
         </div>
         <div
-            className='absolute z-[1] bg-gradient-to-t from-green-800 to-default w-full h-full'
+            className='absolute z-[1] bg-gradient-to-t from-green-600 to-yellow-400 w-full h-full'
             />
         {/* <Image
         className='absolute -z-0 object-fill'
