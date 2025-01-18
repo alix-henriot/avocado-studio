@@ -12,6 +12,8 @@ import {
   TimeInput,
 } from "@nextui-org/react";
 
+//DEPRECATED
+
 type FieldType =
   | "input"
   | "select"
@@ -88,8 +90,11 @@ const FormStep: React.FC<FormStepProps> = ({
                 key={index}
                 label={field.label}
                 placeholder={field.placeholder}
-                isRequired={field.isRequired}
+                isRequired={field.isRequired && !data[field.name]}
                 onChange={(e) => onChange(field.name, e.target.value)}
+                errorMessage={
+                  field.isRequired && !data[field.name] ? "This field is required" : null
+                }
               />
             );
           case "select":
@@ -115,7 +120,6 @@ const FormStep: React.FC<FormStepProps> = ({
                 key={index}
                 label={field.label}
                 placeholder={field.placeholder}
-                isRequired={field.isRequired}
                 //value={data[field.name]}
                 onSelectionChange={(value) => onChange(field.name, value)}
                 //defaultItems={field.options}
@@ -123,9 +127,13 @@ const FormStep: React.FC<FormStepProps> = ({
                 isLoading={list.isLoading}
                 items={list.items}
                 onInputChange={list.setFilterText}
+                isRequired={field.isRequired && !data[field.name]}
+                errorMessage={
+                  field.isRequired && !data[field.name] ? "This field is required" : null
+                }
               >
                 {(item) => (
-                  <AutocompleteItem key={item.nom} className="capitalize">
+                  <AutocompleteItem key={item.code} className="capitalize">
                     {item.nom}
                   </AutocompleteItem>
                 )}
@@ -136,8 +144,11 @@ const FormStep: React.FC<FormStepProps> = ({
               <CheckboxGroup
                 key={index}
                 label={field.label}
-                isRequired={field.isRequired}
                 onChange={(value) => onChange(field.name, value)}
+                isRequired={field.isRequired && !data[field.name]}
+                errorMessage={
+                  field.isRequired && !data[field.name] ? "This field is required" : null
+                }
               >
                 {field.options.map((option: any) => (
                   <Checkbox
@@ -157,6 +168,9 @@ const FormStep: React.FC<FormStepProps> = ({
                 color="success"
                 value={data[field.name]}
                 onChange={(value) => onChange(field.name, value)}
+                errorMessage={
+                  field.isRequired && !data[field.name] ? "Calendar is required" : null
+                }
               />
             );
           case "timeRange":
@@ -172,7 +186,10 @@ const FormStep: React.FC<FormStepProps> = ({
                       minute: value?.minute,
                     })
                   }
-                  isRequired={field.isRequired}
+                  isRequired={field.isRequired && !data[field.name]}
+                  errorMessage={
+                    field.isRequired && !data[field.name] ? "From is required" : null
+                  }
                 />
                 <TimeInput
                   label="To"
@@ -184,7 +201,10 @@ const FormStep: React.FC<FormStepProps> = ({
                       minute: value?.minute,
                     })
                   }
-                  isRequired={field.isRequired}
+                  isRequired={field.isRequired && !data[field.name]}
+                  errorMessage={
+                    field.isRequired && !data[field.name] ? "To is required" : null
+                  }
                 />
               </div>
             );

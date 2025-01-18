@@ -1,6 +1,6 @@
 import { Button, Divider } from '@nextui-org/react'
 import React from 'react'
-import SectionTitle from '../SectionTitle'
+import SectionTitle from '../ui/SectionTitle'
 import { MessageCircle } from 'lucide-react'
 
 type FormStartChatProps = {

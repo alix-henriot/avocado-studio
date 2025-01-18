@@ -12,7 +12,7 @@ const FormProgress: React.FC<FormProgressProps> = ({minValue = 0, maxValue, curr
     <nav className='p-4 max-w-sm mx-auto'>
           <Progress
             minValue={minValue}
-            maxValue={maxValue}
+            maxValue={maxValue - 1}
             value={currentStep}
             color='success'
           />
