@@ -1,18 +1,10 @@
 import { z } from 'zod'
 
-export const FormDataSchema = z.object({
-  /* firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  country: z.string().min(1, 'Country is required'),
-  street: z.string().min(1, 'Street is required'),
-  state: z.string().min(1, 'State is required'),
-  zip: z.string().min(1, 'Zip is required'), */
-
-  
+export const schema = z.object({
   material: z.string().min(1, 'Suck your mom'),
   type: z.string().min(1, 'Material is required'),
 
-  name: z.string().min(1, 'Name is required'),
+  name: z.string(),
   company: z.string().min(1, 'Company is required'),
   email: z.string().min(1, 'Email is required').email('Invalid email address'),
   
