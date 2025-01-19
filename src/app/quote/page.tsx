@@ -1,5 +1,4 @@
-"use client";
-import React, { Suspense, useEffect } from "react";
+"use client"
 import {
   Autocomplete,
   AutocompleteItem,
@@ -12,24 +11,31 @@ import {
   SelectItem,
   TimeInput,
 } from "@nextui-org/react";
+import { v4 as uuidv4 } from "uuid"; 
 import { useForm, FormProvider } from "react-hook-form";
 import { useAsyncList } from "@react-stately/data";
 import FormProgress from "@/components/form/FormProgress";
 import { LoaderCircle } from "lucide-react";
 import { debounce } from "lodash";
 import FormStartChat from "@/components/form/FormStartChat";
+import React, { Suspense } from "react";
+import { quoteGenerator } from "@/components/server/quoteGenerator";
+import saveForm from "@/components/server/saveForm";
 
-type FormData = {
-  material: string;
-  service: string;
+export type FormData = {
+  forEach(arg0: (value: any, key: any) => void): unknown;
+  id?: string;
+  material: "photos" | "videos" | "photos-videos";
+  service: "fashion" | "business" | "food" | "product";
   name: string;
   company: string;
   email: string;
   city: string;
-  setting: string[];
+  setting: ("indoor" | "outdoor" | "studio")[];
   date: { day: number; month: number; year: number };
   from: { hour: number; minute: number };
   to: { hour: number; minute: number };
+  options: ("editing" | "location-search" | "hotel-booking")[];
 };
 
 const steps = [
@@ -53,21 +59,20 @@ const steps = [
     name: "date",
     component: React.lazy(() => import("@/components/form/steps/DateStep")),
   },
+  {
+    id: 4,
+    name: "options",
+    component: React.lazy(() => import("@/components/form/steps/OptionStep")),
+  },
 ];
 
-function Quote() {
+function Form() {
   const [currentStep, setCurrentStep] = React.useState(0);
   const { control, handleSubmit, setValue, trigger, watch } = useForm<FormData>({
     mode: 'onChange',
     shouldUseNativeValidation: true,
     shouldUnregister: false,
-    defaultValues: {
-      material: '',
-      service: '',
-      name: '',
-      company: '',
-      email: ''
-    }
+    //defaultValues: {}
   })
 
   const handleNext = async () => {
@@ -82,9 +87,13 @@ function Quote() {
     }
   };
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form Submitted:", data);
-    alert(JSON.stringify(data));
+  const onSubmit = async (formData: FormData) => {
+    //submit data, get an id and push to /quote/id
+    const result = await saveForm(formData);
+
+    if (result?.redirectUrl) {
+      window.location.href = result.redirectUrl; // Perform the redirect manually
+    }
   };
 
   const renderStep = React.useCallback(
@@ -134,4 +143,4 @@ function Quote() {
   );
 }
 
-export default Quote;
+export default Form;
