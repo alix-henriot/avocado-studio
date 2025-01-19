@@ -1,4 +1,4 @@
-'use client'
+'use server'
 import ActionCard from "@/components/ui/ActionCard";
 import BrandShowcase from "@/components/ui/BrandShowcase";
 import Portfolio from "@/components/ui/Portfolio";
@@ -13,7 +13,7 @@ import Hero from "@/components/ui/Hero";
 import Link from "next/link";
 
 
-export default function Home() {
+export default async function Home() {
 
   const carouselData = {
     categories: ['Fashion', 'Business', 'Food', 'Product'],
