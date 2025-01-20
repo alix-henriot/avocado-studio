@@ -11,7 +11,7 @@ type BrandShowcaseProps = {
 
 const BrandShowcase: React.FC<BrandShowcaseProps> = ({title, subtitle, items}) => {
   return (
-    <section className='snap-center snap-always'>
+    <section className='snap-proximity'>
         <div
         className='relative container flex flex-col gap-4 px-4 lg:px-20 pb-4 lg:pb-20 pt-8 lg:pt-20 my-auto mx-auto max-w-screen md:max-w-5xl md:aspect-video rounded-2xl lg:rounded-3xl overflow-clip'
         >

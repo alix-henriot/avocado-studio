@@ -27,7 +27,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({className, title, subtitle, sr
     const opacity = useTransform(scrollYProgress, [0, 1], [0.2, 1]); */
 
   return (
-    <section className='px-3 lg:px-0 snap-center snap-always'>
+    <section className='px-3 lg:px-0 snap-proximity'>
       <div
       className='relative container grid grid-cols-1 place-items-end p-6 lg:p-20 my-3 sm:my-5 mx-auto max-w-screen md:max-w-5xl aspect-[3/4] sm:aspect-video rounded-2xl lg:rounded-3xl overflow-clip'
       >

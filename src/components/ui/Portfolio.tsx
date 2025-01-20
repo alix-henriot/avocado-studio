@@ -23,12 +23,12 @@ type PortfolioProps = {
 const Portfolio: React.FC<PortfolioProps> = ({categories, items}) => {
   return (
     <section className=''>
-        <div className='grid grid-flow-row gap-3 min-h-[50vh] snap-start snap-always'>
+        <div className='grid grid-flow-row gap-3 min-h-[50vh] snap-start snap-proximity'>
           <Tabs className='mx-auto' aria-label="portfolio" radius='full' size='md' color='default'>
             {categories.map((category, index) => (
               <Tab key={index} title={category}>
                 <div
-                className="grid grid-flow-col grid-rows-2 auto-cols-[minmax(40%,_1fr)] sm:auto-cols-[minmax(20%,_1fr)] px-4 lg:px-16 sm:my-5 mx-auto max-w-screen gap-3 sm:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory snap-center snap-always"
+                className="grid grid-flow-col grid-rows-2 auto-cols-[minmax(40%,_1fr)] sm:auto-cols-[minmax(20%,_1fr)] px-4 lg:px-16 sm:my-5 mx-auto max-w-screen gap-3 sm:gap-4 overflow-x-auto scrollbar-hide"
                 >
                 {items
                 .filter(item => item.category === category)

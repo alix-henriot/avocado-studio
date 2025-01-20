@@ -12,7 +12,7 @@ type ActionCardProps = {
 
 const ActionCard: React.FC<ActionCardProps> = ({title, subtitle, src, alt, children}) => {
   return (
-    <section className='px-3 lg:px-0 snap-start'>
+    <section className='px-3 lg:px-0 snap-none'>
     <div
     className='relative container grid sm:grid-cols-4 gap-3 p-6 lg:p-10 mx-auto my-16 items-center max-w-screen md:max-w-5xl sm:aspect-[4/1] rounded-2xl lg:rounded-3xl overflow-clip'
     >

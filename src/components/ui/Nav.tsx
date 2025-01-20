@@ -10,7 +10,7 @@ type NavProps = {
 
 const Nav: React.FC<NavProps> = ({ children }) => {
   return (
-    <header className="px-3 lg:px-0 snap-start">
+    <header className="px-3 lg:px-0 snap-none">
       <div className="container top-0 flex flex-row mb-3 pt-3 mx-auto max-w-screen md:max-w-5xl items-end justify-between">
         <div className="flex items-baseline font-medium text-xl tracking-tight">
           <h5>Avocado Studio</h5>

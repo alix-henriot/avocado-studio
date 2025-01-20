@@ -19,7 +19,7 @@ const Hero: React.FC<HeroProps> = ({title, subtitle, src, alt, children}) => {
   return (
     <section className='px-3 lg:px-0'>
         <div
-        className='relative container flex flex-col justify-center items-center mx-auto mb-4 sm:mb-20 max-w-screen md:max-w-5xl min-h-[60vh] overflow-hidden snap-start'
+        className='relative container flex flex-col justify-center items-center mx-auto mb-4 sm:mb-20 max-w-screen md:max-w-5xl min-h-[60vh] overflow-hidden snap-none'
         >
 
             <SectionTitle className='text-center text-foreground max-w-72 md:max-w-full mb-4' title={title} subtitle={subtitle}/>
