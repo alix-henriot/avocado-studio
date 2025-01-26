@@ -1,4 +1,6 @@
 'use server'
+import { promises as fs } from "fs";
+import path from "path";
 import ActionCard from "@/components/ui/ActionCard";
 import BrandShowcase from "@/components/ui/BrandShowcase";
 import Portfolio from "@/components/ui/Portfolio";
@@ -7,154 +9,16 @@ import FeatureList from "@/components/ui/FeatureList";
 import { FlipWords } from "@/components/ui/FlipWords";
 import Footer from "@/components/ui/Footer";
 import Nav from "@/components/ui/Nav";
-import { Button, Divider } from "@nextui-org/react";
-import { Camera, Video } from "lucide-react";
+import { Button, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { Camera, Ellipsis, Video } from "lucide-react";
 import Hero from "@/components/ui/Hero";
 import Link from "next/link";
 
 
 export default async function Home() {
-
-  const carouselData = {
-    categories: ['Fashion', 'Business', 'Food', 'Product'],
-    items: [
-      {
-        src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D',
-        alt: 'A',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1544957992-20514f595d6f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
-        alt: 'B',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1603189343302-e603f7add05a?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'C',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1601597565151-70c4020dc0e1?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'C',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1574015974293-817f0ebebb74?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'D',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1551113006-731674fbb3ff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
-        alt: 'E',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1591567462127-1f25099900ab?q=80&w=2866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'F',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1596993100471-c3905dafa78e?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'G',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1618142628642-62a239cb9b5e?q=80&w=2978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'H',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1530884814558-1e316305211a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'I',
-        category: 'Fashion',
-      },
-      {
-        src: 'https://images.unsplash.com/photo-1660866838287-d2239bb99976?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'J',
-        category: 'Fashion',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/400',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/800',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/300',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/200',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/200',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/200',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/200',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        title: 'Historic Bridge',
-        description: 'A historic stone bridge over a calm river.',
-        src: 'https://picsum.photos/200',
-        alt: 'A stone bridge crossing a river',
-        category: 'Business',
-      },
-      {
-        src: 'https://picsum.photos/200',
-        alt: 'A freshly baked pizza with toppings',
-        category: 'Food',
-      },
-      {
-        src: 'https://picsum.photos/200',
-        alt: 'A platter with assorted fresh fruits',
-        category: 'Food',
-      },
-      {
-        title: 'Cutting-Edge Laptop',
-        description: 'A sleek laptop on a modern desk.',
-        src: 'https://picsum.photos/200',
-        alt: 'A laptop on a desk',
-        category: 'Product',
-      },
-      {
-        title: 'Smartphone Design',
-        description: 'A high-end smartphone with a minimalistic design.',
-        src: 'https://picsum.photos/200',
-        alt: 'A smartphone on a table',
-        category: 'Product',
-      },
-    ],
-  };  
+    const dbPath = path.join(process.cwd(), "db", "portfolio.json");
+    const dbContent = await fs.readFile(dbPath, "utf-8");
+    const dbPortfolio = JSON.parse(dbContent);
 
   const featureCardData = [
     {
@@ -274,7 +138,7 @@ export default async function Home() {
         <Nav/>
         <Hero title='Photography in South France' subtitle='Exposure for your company' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'/>
         
-        <Portfolio {...carouselData}/>
+        <Portfolio categories={['fashion', 'business', 'food', 'product']} items={dbPortfolio}/>
 
         <FeatureCard {...featureCardData[0]}/>
 
