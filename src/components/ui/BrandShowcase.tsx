@@ -24,7 +24,7 @@ const BrandShowcase: React.FC<BrandShowcaseProps> = ({title, subtitle, items}) =
                     key={index}
                     src={item.src}
                     alt={item.name}
-                    className='p-3 sm:p-6 max-w-32 sm:max-w-1/3 aspect-square bg-default-100 rounded-3xl mx-auto'
+                    className='p-3 sm:p-6 max-w-32 sm:max-w-1/3 aspect-square rounded-3xl mx-auto'
                     />
                 ))}
             </div>
