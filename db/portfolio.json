@@ -1,0 +1,234 @@
+[
+  {
+    "id": 1,
+    "src": "https://picsum.photos/400",
+    "alt": "A beautiful nature scene",
+    "description": "A breathtaking view of a lush forest with sunlight streaming through the trees.",
+    "title": "Serene Nature",
+    "category": "fashion"
+  },
+  {
+    "id": 2,
+    "src": "https://picsum.photos/400",
+    "alt": "A bustling cityscape",
+    "description": "A panoramic view of a modern city with skyscrapers and busy streets.",
+    "title": "Urban Jungle",
+    "category": "business"
+  },
+  {
+    "id": 3,
+    "src": "https://picsum.photos/400",
+    "alt": "A calm ocean view",
+    "description": "A tranquil scene of a pristine beach with crystal clear waters and a blue sky.",
+    "title": "Ocean Bliss",
+    "category": "fashion"
+  },
+  {
+    "id": 4,
+    "src": "https://picsum.photos/400",
+    "alt": "Majestic mountain peaks",
+    "description": "Snow-capped mountains under a clear blue sky, surrounded by dense forests.",
+    "title": "Mountain Majesty",
+    "category": "product"
+  },
+  {
+    "id": 5,
+    "src": "https://picsum.photos/400",
+    "alt": "Wildlife in its natural habitat",
+    "description": "A deer standing gracefully in a meadow surrounded by tall grass.",
+    "title": "Wildlife Wonders",
+    "category": "food"
+  },
+  {
+    "id": 6,
+    "src": "https://picsum.photos/400",
+    "alt": "A stylish outfit",
+    "description": "A model showcasing the latest fashion trends in a sleek modern outfit.",
+    "title": "Fashion Forward",
+    "category": "fashion"
+  },
+  {
+    "id": 7,
+    "src": "https://picsum.photos/400",
+    "alt": "A corporate meeting",
+    "description": "Business professionals engaged in a discussion at a modern office table.",
+    "title": "Corporate Collaboration",
+    "category": "business"
+  },
+  {
+    "id": 8,
+    "src": "https://picsum.photos/400",
+    "alt": "A high-tech gadget",
+    "description": "A close-up shot of a cutting-edge smartphone with a sleek design.",
+    "title": "Tech Marvel",
+    "category": "product"
+  },
+  {
+    "id": 9,
+    "src": "https://picsum.photos/400",
+    "alt": "A gourmet dish",
+    "description": "A delicious plate of gourmet food with vibrant ingredients and elegant plating.",
+    "title": "Culinary Art",
+    "category": "food"
+  },
+  {
+    "id": 10,
+    "src": "https://picsum.photos/400",
+    "alt": "Modern architecture",
+    "description": "A strikingly modern building with unique and bold geometric shapes.",
+    "title": "Architectural Wonder",
+    "category": "business"
+  },
+  {
+    "id": 11,
+    "src": "https://picsum.photos/400",
+    "alt": "Makeup products",
+    "description": "An assortment of colorful makeup products arranged on a vanity.",
+    "title": "Beauty Essentials",
+    "category": "fashion"
+  },
+  {
+    "id": 12,
+    "src": "https://picsum.photos/400",
+    "alt": "A modern workspace",
+    "description": "A clean and minimalistic workspace setup with a laptop and coffee.",
+    "title": "Work From Home",
+    "category": "business"
+  },
+  {
+    "id": 13,
+    "src": "https://picsum.photos/400",
+    "alt": "Stylish shoes",
+    "description": "A pair of trendy shoes placed elegantly on a wooden surface.",
+    "title": "Step in Style",
+    "category": "fashion"
+  },
+  {
+    "id": 14,
+    "src": "https://picsum.photos/400",
+    "alt": "A decadent dessert",
+    "description": "A rich chocolate cake garnished with fresh fruits and powdered sugar.",
+    "title": "Sweet Indulgence",
+    "category": "food"
+  },
+  {
+    "id": 15,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury watch",
+    "description": "A premium wristwatch with a leather strap and elegant dial design.",
+    "title": "Timeless Elegance",
+    "category": "product"
+  },
+  {
+    "id": 16,
+    "src": "https://picsum.photos/400",
+    "alt": "A high-performance laptop",
+    "description": "A sleek and modern laptop designed for business and productivity.",
+    "title": "Tech Efficiency",
+    "category": "business"
+  },
+  {
+    "id": 17,
+    "src": "https://picsum.photos/400",
+    "alt": "A cup of coffee",
+    "description": "A steaming cup of coffee served in a ceramic mug on a wooden table.",
+    "title": "Morning Brew",
+    "category": "food"
+  },
+  {
+    "id": 18,
+    "src": "https://picsum.photos/400",
+    "alt": "Elegant jewelry",
+    "description": "A set of gold necklaces and rings placed on a velvet background.",
+    "title": "Golden Charm",
+    "category": "fashion"
+  },
+  {
+    "id": 19,
+    "src": "https://picsum.photos/400",
+    "alt": "Wireless headphones",
+    "description": "A pair of wireless headphones with a stylish and modern design.",
+    "title": "Audio Bliss",
+    "category": "product"
+  },
+  {
+    "id": 20,
+    "src": "https://picsum.photos/400",
+    "alt": "A freshly baked pizza",
+    "description": "A delicious pizza with melted cheese, fresh toppings, and a golden crust.",
+    "title": "Italian Delight",
+    "category": "food"
+  },
+  {
+    "id": 21,
+    "src": "https://picsum.photos/400",
+    "alt": "A designer handbag",
+    "description": "A luxurious leather handbag in an elegant setting.",
+    "title": "Luxury Carry",
+    "category": "fashion"
+  },
+  {
+    "id": 22,
+    "src": "https://picsum.photos/400",
+    "alt": "A professional meeting",
+    "description": "Colleagues collaborating around a table in a stylish conference room.",
+    "title": "Teamwork in Action",
+    "category": "business"
+  },
+  {
+    "id": 23,
+    "src": "https://picsum.photos/400",
+    "alt": "A sleek water bottle",
+    "description": "A minimalistic stainless steel water bottle on a wooden surface.",
+    "title": "Hydration On-The-Go",
+    "category": "product"
+  },
+  {
+    "id": 24,
+    "src": "https://picsum.photos/400",
+    "alt": "A gourmet burger",
+    "description": "A juicy burger with fresh lettuce, tomatoes, and a perfectly grilled patty.",
+    "title": "Burger Bliss",
+    "category": "food"
+  },
+  {
+    "id": 25,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury perfume bottle",
+    "description": "A premium perfume bottle elegantly designed and displayed on a marble table.",
+    "title": "Fragrant Elegance",
+    "category": "fashion"
+  },
+  {
+    "id": 26,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury perfume bottle",
+    "description": "A premium perfume bottle elegantly designed and displayed on a marble table.",
+    "title": "Fragrant Elegance",
+    "category": "fashion"
+  },
+  {
+    "id": 27,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury perfume bottle",
+    "description": "A premium perfume bottle elegantly designed and displayed on a marble table.",
+    "title": "Fragrant Elegance",
+    "category": "fashion"
+  },
+  {
+    "id": 28,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury perfume bottle",
+    "description": "A premium perfume bottle elegantly designed and displayed on a marble table.",
+    "title": "Fragrant Elegance",
+    "category": "fashion"
+  },
+  {
+    "id": 29,
+    "src": "https://picsum.photos/400",
+    "alt": "Luxury perfume bottle",
+    "description": "A premium perfume bottle elegantly designed and displayed on a marble table.",
+    "title": "Fragrant Elegance",
+    "category": "fashion"
+  }
+]
