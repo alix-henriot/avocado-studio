@@ -28,7 +28,7 @@ const Portfolio: React.FC<PortfolioProps> = ({categories, items}) => {
             {categories.map((category, index) => (
               <Tab key={index} title={category}>
                 <div
-                className="grid grid-flow-col grid-rows-2 auto-cols-[minmax(40%,_1fr)] sm:auto-cols-[minmax(20%,_1fr)] px-4 lg:px-16 sm:my-5 mx-auto max-w-screen gap-3 sm:gap-4 overflow-x-auto scrollbar-hide"
+                className="grid grid-flow-col grid-rows-3 sm:grid-rows-2 auto-cols-[40%] sm:auto-cols-[20%] px-4 lg:px-16 sm:my-5 mx-auto max-w-screen gap-3 sm:gap-4 overflow-x-auto scrollbar-hide"
                 >
                 {items
                 .filter(item => item.category === category)
@@ -63,8 +63,6 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({className, title, descript
             onClick={onOpen}
             className='aspect-square object-cover hover:cursor-pointer'
             loading='lazy'
-            isZoomed
-            //isBlurred
             width='w-auto'
             height='h-auto'
             src={src}
@@ -78,15 +76,14 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({className, title, descript
                     <ModalBody>
                         <Image
                         onClick={onOpen}
-                        className='aspect-square object-cover hover:cursor-pointer'
+                        className='min-w-[40%] aspect-square object-cover hover:cursor-pointer'
                         loading='lazy'
-                        isZoomed
-                        //isBlurred
-                        width='min-w-[40%]'
-                        height='h-auto'
                         src={src}
                         alt={alt}
                         />
+                        <p>
+                          {description}
+                        </p>
                     </ModalBody>
                     <ModalFooter>
                         {/* <Button color="danger" variant="light" onPress={onClose}>
