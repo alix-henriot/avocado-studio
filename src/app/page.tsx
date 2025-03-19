@@ -1,4 +1,4 @@
-'use server'
+"use server"
 import ActionCard from "@/components/ui/ActionCard";
 import BrandShowcase from "@/components/ui/BrandShowcase";
 import Portfolio from "@/components/ui/Portfolio";
@@ -12,8 +12,8 @@ import { Camera, Ellipsis, Video } from "lucide-react";
 import Hero from "@/components/ui/Hero";
 import Link from "next/link";
 
-
 export default async function Home() {
+  
   const dbPortfolio = [
     {
       "id": 1,
@@ -256,11 +256,6 @@ export default async function Home() {
       //src: '/business-service.jpg',
       className: 'from-green-800 to-default',
       alt: 'Photographer editing photos',
-      children: <div className='grid grid-flow-col gap-4 sm:gap-16 text-green-500'>
-        <Camera className='w-16 sm:w-24 h-16 sm:h-24'/>
-        <Divider className='bg-default' orientation='vertical' />
-        <Video className='w-16 sm:w-24 h-16 sm:h-24'/>
-      </div>
     },
     {
       className: 'from-black',
@@ -363,13 +358,19 @@ export default async function Home() {
     <div
     className=''
     >
-      <main className='snap-y snap-proximity h-screen overflow-y-scroll scroll-p-4'>
+      <main className='h-screen'>
         <Nav/>
         <Hero title='Photography in South France' subtitle='Exposure for your company' src='/hero-image.jpg' alt='Louis Vuitton Fashion shooting'/>
         
-        <Portfolio categories={['fashion', 'business', 'food', 'product']} items={dbPortfolio}/>
+        <Portfolio />
 
-        <FeatureCard {...featureCardData[0]}/>
+        <FeatureCard {...featureCardData[0]} className='from-green-800 to-default'>
+          <div className='grid grid-flow-col gap-4 sm:gap-16 text-green-500'>
+            <Camera className='w-16 sm:w-24 h-16 sm:h-24'/>
+            <Divider className='bg-default' orientation='vertical' />
+            <Video className='w-16 sm:w-24 h-16 sm:h-24'/>
+          </div>
+        </FeatureCard>
 
         <FeatureList {...featureListData}/>
 

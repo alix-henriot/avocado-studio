@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 
+
 const robotoFlex = Roboto_Flex({
   variable: "--font-roboto-sans",
   subsets: ["latin"],
@@ -14,21 +15,24 @@ export const metadata: Metadata = {
   description: "Chinese Photography Service in South France.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  //params: Promise<{ locale: string }>
 }>) {
+
+
   return (
-    <html lang="en">
+    <html>
       <body
         className={`${robotoFlex.variable} antialiased debug-screens`}
-      >
-        <NextUIProvider>
-          <NextThemesProvider attribute="class">
-          {children}
-          </NextThemesProvider>
-        </NextUIProvider>
+        >
+          <NextUIProvider>
+            <NextThemesProvider attribute="class">
+            {children}
+            </NextThemesProvider>
+          </NextUIProvider>
       </body>
     </html>
   );

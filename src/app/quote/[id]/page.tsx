@@ -1,3 +1,4 @@
+// src/app/quote/[id]/page.tsx
 "use client";
 import {
   Button,
@@ -8,94 +9,81 @@ import {
   TableHeader,
   TableRow,
   Spinner,
+  Input,
 } from "@nextui-org/react";
 import Nav from "@/components/ui/Nav";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
 
-type QuoteResult = {
-  basePrice: number;
-  unitType: string;
-  baseTotal: number;
-  editingPrice: number;
-  hourlyRate: number;
-  extraHours: number;
-  travelFee: number;
-  subTotal: number;
-  discount: number;
-  total: number;
-  validUntilDate: string;
-  description: string;
-};
 
-type FormSubmission = {
+
+type QuoteResponse = {
   id: number;
-  material: Array<'photos' | 'videos'>;
-  service: 'fashion' | 'event' | 'food' | 'product' | 'wedding';
-  editing: boolean;
-  unit: number;
-  name: string;
-  company: string;
-  email: string;
-  city: string;
-  setting: Array<'indoor' | 'outdoor' | 'studio'>;
-  date: string;
-  coordinates: [number, number];
+  publicId: string;
+  createdAt: string;
+  customer: {
+    name: string;
+    email: string;
+    company: string;
+    location: {
+      city: string;
+      coordinates: {
+        lat: number;
+        lng: number;
+      };
+    };
+  };
+  details: {
+    service: string;
+    material: string;
+    editing: string;
+    settings: string[];
+    quantity: number;
+  };
+  pricing: {
+    basePrice: number;
+    travelPrice: number;
+    subtotal: number;
+    discount: {
+      applied: boolean;
+      percentage: number;
+      amount: number;
+    };
+    taxPercentage: number;
+    total: number;
+  };
+  travel: {
+    distance: number;
+    price: number;
+  };
+  expiration: string;
 };
 
-export default function QuotePage({ params }: { params: { id: string } }) {
-  const router = useRouter();
-  const [submission, setSubmission] = useState<FormSubmission | null>(null);
-  const [quote, setQuote] = useState<QuoteResult | null>(null);
+export default function QuotePage() {
+  const { id } = useParams(); // Retrieve the dynamic route parameter
+  const [quoteData, setQuoteData] = useState<QuoteResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!id) return; // Ensure id exists
+
     const fetchData = async () => {
       try {
-        // 1. Fetch submission data
-        const submissionRes = await fetch(`/api/submissions/${params.id}`);
-        if (!submissionRes.ok) throw new Error('Submission not found');
-        const submissionData: FormSubmission = await submissionRes.json();
-
-        // 2. Get travel cost
-        const travelRes = await fetch('/api/pricing/travel-cost', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ coordinates: submissionData.coordinates })
-        });
-        if (!travelRes.ok) throw new Error('Failed to calculate travel cost');
-        const { cost: travelFee } = await travelRes.json();
-
-        // 3. Get base quote
-        const quoteRes = await fetch('/api/pricing/quote', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(submissionData)
-        });
-        if (!quoteRes.ok) throw new Error('Failed to calculate quote');
-        const { quote: quoteData } = await quoteRes.json();
-
-        // 4. Combine results
-        const fullQuote = {
-          ...quoteData,
-          travelFee,
-          total: quoteData.total + travelFee
-        };
-
-        setSubmission(submissionData);
-        setQuote(fullQuote);
-
+        const response = await fetch(`/api/quote/${id}`);
+        if (!response.ok) throw new Error("Quote not found");
+        const data = await response.json();
+        setQuoteData(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load quote');
-        router.push('/not-found');
+        setError(err instanceof Error ? err.message : "Failed to load quote");
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [params.id, router]);
+  }, [id]);
 
   if (loading) {
     return (
@@ -105,7 +93,7 @@ export default function QuotePage({ params }: { params: { id: string } }) {
     );
   }
 
-  if (error || !submission || !quote) {
+  if (error || !quoteData) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-danger">{error}</p>
@@ -113,10 +101,16 @@ export default function QuotePage({ params }: { params: { id: string } }) {
     );
   }
 
-  const formattedDate = new Date(submission.date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const formattedDate = new Date(quoteData.createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const expirationDate = new Date(quoteData.expiration).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   return (
@@ -124,20 +118,19 @@ export default function QuotePage({ params }: { params: { id: string } }) {
       <Nav />
       <div className="container grid grid-cols-1 sm:grid-cols-2 grid-flow-row gap-3 p-6 lg:p-10 mx-auto my-16 max-w-screen md:max-w-3xl">
         {/* Header Section */}
-        <div className="">
-          <h1 className="text-2xl font-semibold">
-            Quote #{params.id.padStart(5, "0")}
-          </h1>
+        <div>
+          <h1 className="text-2xl font-semibold">{quoteData.publicId}</h1>
           <span className="text-sm">
-            {submission.city}, {formattedDate}
+            {quoteData.customer.location.city}, {formattedDate}
           </span>
         </div>
 
         {/* Action Buttons */}
         <div className="flex justify-end items-center gap-3">
-          <Button variant="light" color="success" radius="full">
+          {/* <Button variant="light" color="success" radius="full"
+          >
             Save as PDF
-          </Button>
+          </Button> */}
           <Button color="success" radius="full">
             Approve quote
           </Button>
@@ -152,43 +145,40 @@ export default function QuotePage({ params }: { params: { id: string } }) {
             <TableColumn align="end">QUANTITY</TableColumn>
             <TableColumn align="end">AMOUNT EXCL. VAT</TableColumn>
           </TableHeader>
-          <TableBody
-            isLoading={loading}
-            loadingContent={<Spinner label="Loading..." />}
-          >
+          <TableBody>
             {[
               {
-                key: 'shooting',
-                description: quote.description,
-                unitPrice: quote.basePrice,
-                unit: quote.unitType,
-                quantity: submission.unit,
-                amount: quote.baseTotal
+                key: "base",
+                description: `${quoteData.details.service} (${quoteData.details.material})`,
+                unitPrice: quoteData.pricing.basePrice,
+                unit: "session",
+                quantity: quoteData.details.quantity,
+                amount: quoteData.pricing.basePrice * quoteData.details.quantity,
               },
-              ...(quote.editingPrice > 0 ? [{
-                key: 'editing',
-                description: 'Photo Editing',
-                unitPrice: quote.editingPrice,
-                unit: 'service',
+              ...quoteData.details.settings.map((setting, index) => ({
+                key: `setting-${index}`,
+                description: `${setting.charAt(0).toUpperCase() + setting.slice(1)} Setting`,
+                unitPrice: 50, // Assuming fixed setting price
+                unit: "setting",
                 quantity: 1,
-                amount: quote.editingPrice
-              }] : []),
-              ...(quote.extraHours > 0 ? [{
-                key: 'extra-hours',
-                description: 'Extra Hours',
-                unitPrice: quote.hourlyRate,
-                unit: 'hour',
-                quantity: quote.extraHours,
-                amount: quote.hourlyRate * quote.extraHours
-              }] : []),
-              ...(quote.travelFee > 0 ? [{
-                key: 'travel',
-                description: 'Travel Fees',
-                unitPrice: quote.travelFee,
-                unit: 'trip',
+                amount: 50,
+              })),
+              {
+                key: "editing",
+                description: quoteData.details.editing,
+                unitPrice: quoteData.details.editing.includes("With") ? 200 : 0,
+                unit: "service",
                 quantity: 1,
-                amount: quote.travelFee
-              }] : [])
+                amount: quoteData.details.editing.includes("With") ? 200 : 0,
+              },
+              {
+                key: "travel",
+                description: "Travel Fees",
+                unitPrice: quoteData.pricing.travelPrice,
+                unit: "trip",
+                quantity: 1,
+                amount: quoteData.pricing.travelPrice,
+              },
             ].map((item) => (
               <TableRow key={item.key}>
                 <TableCell>{item.description}</TableCell>
@@ -209,19 +199,23 @@ export default function QuotePage({ params }: { params: { id: string } }) {
           </TableHeader>
           <TableBody>
             {[
-              { key: 'subtotal', label: 'SUB TOTAL', value: quote.subTotal },
-              ...(quote.discount > 0 ? [{
-                key: 'discount', 
-                label: 'DISCOUNT', 
-                value: -quote.discount
-              }] : []),
-              { key: 'total', label: 'TOTAL', value: quote.total }
+              { key: "subtotal", label: "SUB TOTAL", value: quoteData.pricing.subtotal },
+              ...(quoteData.pricing.discount.applied
+                ? [
+                  {
+                    key: "discount",
+                    label: `DISCOUNT (${quoteData.pricing.discount.percentage}%)`,
+                    value: -quoteData.pricing.discount.amount,
+                  },
+                ]
+                : []),
+              { key: "total", label: "TOTAL", value: quoteData.pricing.total },
             ].map((item) => (
               <TableRow key={item.key}>
-                <TableCell className={item.key === 'total' ? 'font-bold text-md' : ''}>
+                <TableCell className={item.key === "total" ? "font-bold text-md" : ""}>
                   {item.label}
                 </TableCell>
-                <TableCell className={item.key === 'total' ? 'font-bold text-md' : ''}>
+                <TableCell className={item.key === "total" ? "font-bold text-md" : ""}>
                   {item.value.toFixed(2)} €
                 </TableCell>
               </TableRow>
@@ -231,11 +225,7 @@ export default function QuotePage({ params }: { params: { id: string } }) {
 
         {/* Footer Note */}
         <p className="text-sm p-6">
-          Offer and discount valid until {new Date(quote.validUntilDate).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}.<br />
+          Offer and discount valid until {expirationDate}.<br />
           50% deposit paid on acceptance of quotation.
         </p>
       </div>

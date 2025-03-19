@@ -18,7 +18,7 @@ type ListItemProps = {
 
 const FeatureList: React.FC<FeatureListProps> = ({title, subtitle, items}) => {
   return (
-    <section className='px-3 lg:px-0 snap-proximity'>
+    <section className='px-3 lg:px-0'>
     <div
     className='relative container flex flex-col gap-4 px-4 lg:px-20 pb-4 lg:pb-20 pt-8 lg:pt-20 mx-auto max-w-screen md:max-w-5xl md:aspect-video rounded-2xl lg:rounded-3xl overflow-clip'
     >

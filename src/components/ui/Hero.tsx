@@ -5,6 +5,8 @@ import SectionTitle from './SectionTitle';
 import { Button } from '@nextui-org/react';
 import BackgroundMarquee from './BackgroundMarquee';
 import Link from 'next/link';
+import { Spotlight } from './Spotlight';
+import Nav from './Nav';
 
 type HeroProps = {
     title: string;
@@ -21,12 +23,15 @@ const Hero: React.FC<HeroProps> = ({title, subtitle, src, alt, children}) => {
         <div
         className='relative container flex flex-col justify-center items-center mx-auto mb-4 sm:mb-20 max-w-screen md:max-w-5xl min-h-[60vh] overflow-hidden snap-none'
         >
-
+            {/* <Spotlight
+              className="-top-80 left-0 md:left-60 md:-top-20 z-50"
+              fill="white"
+            /> */}
             <SectionTitle className='text-center text-foreground max-w-72 md:max-w-full mb-4' title={title} subtitle={subtitle}/>
             <Link href="/quote" passHref>
               <Button variant='shadow' color='success' size='md' className='w-fit mb-8 z-10 mx-auto' radius='full'>Instant quote</Button>
             </Link>
-            <BackgroundMarquee/>
+            {/* <BackgroundMarquee/> */}
             <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-background"></div>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background"></div>
         </div>
